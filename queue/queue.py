@@ -40,4 +40,38 @@ class Queue:
         
 
 # SLL
-
+class Queue:
+    def __init__(self):        
+        self.storage = LinkedList()
+        self.size = 0
+        
+    
+    def __len__(self):
+        return self.size    
+    
+    def enqueue(self, value):
+        new_node = Node(value)
+        if self.storage.head is None:
+            self.size += 1
+            self.storage.head = new_node
+            self.storage.tail = new_node
+        else:
+            self.size += 1
+            new_node.next_node = self.storage.head
+            self.storage.head = new_node
+        
+    def dequeue(self):
+        # empty list
+        if self.storage.head is None:
+            return None
+        # 1 item in list
+        elif self.storage.head == self.storage.tail:
+            removed_value = self.storage.tail.get_value()
+            self.storage.head = None
+            self.storage.tail = None
+            self.size -= 1
+            return removed_value
+        # 2 or more items in list
+        else:
+            self.size -= 1
+            return self.storage.remove_tail()
