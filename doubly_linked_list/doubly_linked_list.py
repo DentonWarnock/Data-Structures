@@ -107,7 +107,7 @@ class DoublyLinkedList:
     def move_to_end(self, node):
         if node is self.tail:
             return        
-        # save the value we will deleted
+        # save the value we will delete
         old_value = node.value
         # delete
         self.delete(node)
@@ -161,6 +161,8 @@ class DoublyLinkedList:
         while current_node is not None:
             if current_node.value > current_max:
                 current_max = current_node.value
+                
+            #iterate
             current_node = current_node.next
             
         return current_max
