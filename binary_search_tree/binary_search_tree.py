@@ -78,8 +78,15 @@ class BSTNode:
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
-
+        # call function on self
+        fn(self.value)
+        # if left node call for_each
+        if self.left is not None:
+            self.left.for_each(fn)
+        # if right node call for_each
+        if self.right is not None:
+            self.right.for_each(fn)
+        
     # Part 2 -----------------------
 
     # Print all the values in order from low to high
