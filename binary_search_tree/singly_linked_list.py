@@ -102,16 +102,17 @@ class LinkedList:
         return current_max
     
     def reverse_ll(self):
-        cur_node = self.head
-        next_node = cur_node.next
-        # head points to None
-        cur_node.set_next(None)
-        while next_node is not None:
-            prev_node = cur_node
-            cur_node = next_node
-            next_node = next_node.get_next()
-            cur_node.set_next(prev_node)
-        self.tail = cur_node
+        previous = None
+        current = self.head
+        while current:
+            next = current.next # save next node before we move its pointer
+            current.next = previous # flip pointers dirction in the list
+            # iterate previous and current
+            previous = current
+            current = next
+        # after loop finishes set tail to old head
+        self.tail = previous
+            
     
 linked_list = LinkedList()
     
@@ -133,4 +134,6 @@ print(f'the max of the list is: {linked_list.get_max()}')
 linked_list.add_to_tail(7)
 print(f'the end of the list is: {linked_list.tail.value}')
 print(f'the max of the list is: {linked_list.get_max()}')
+
+
 

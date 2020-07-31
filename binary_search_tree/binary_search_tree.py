@@ -118,7 +118,7 @@ class BSTNode:
                 # go right
                 self.right.in_order_print(self.right)
             #print
-        pass
+        
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
@@ -137,8 +137,7 @@ class BSTNode:
             if removed.left:
                 queue.enqueue(removed.left)
             if removed.right:
-                queue.enqueue(removed.right)
-        
+                queue.enqueue(removed.right)     
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
