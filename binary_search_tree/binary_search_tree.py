@@ -9,6 +9,9 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+from queue import Queue
+from stack import Stack
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -99,9 +102,7 @@ class BSTNode:
             # larger child becomes the parent of its sibling
         
     # Part 2 -----------------------
-    from queue import Queue
-    from stack import Stack
-
+ 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
@@ -109,8 +110,10 @@ class BSTNode:
             if self.left is not None:
                 # go left
                 self.left.in_order_print(self.left)
-            # print
+                
+            # print current node
             print(self.value)
+            
             if self.right is not None:
                 # go right
                 self.right.in_order_print(self.right)
@@ -123,7 +126,7 @@ class BSTNode:
         # create a queue for nodes
         queue = Queue()
         # add the first node to the queue
-        queue.enqueue(node.value)
+        queue.enqueue(node)
         # while queue is not empty
         while queue.size > 0:
             # remove the first node from the queue
@@ -131,9 +134,9 @@ class BSTNode:
             # print the removed node
             print(removed.value)
             # add all children into the queue
-            if removed.left is not None:
+            if removed.left:
                 queue.enqueue(removed.left)
-            if removed.right is not None:
+            if removed.right:
                 queue.enqueue(removed.right)
         
 
@@ -143,7 +146,7 @@ class BSTNode:
         # create a stack for nodes
         stack = Stack()
         # add the first node to the stack
-        stack.push(node.value)
+        stack.push(node)
         # while the stack is not empty
         while stack.size > 0:
             # get the current node from the top of the stack - pop
@@ -151,9 +154,9 @@ class BSTNode:
             # print that node
             print(removed.value)
             # add all children to stack - order matters!
-            if removed.left is not None:
+            if removed.left:
                 stack.push(removed.left)
-            if removed.right is not None:
+            if removed.right:
                 stack.push(removed.right)
         # done when stack is empty
             
@@ -163,11 +166,11 @@ class BSTNode:
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
-    def pre_order_dft(self):
+    def pre_order_dft(self, node):
         pass
 
     # Print Post-order recursive DFT
-    def post_order_dft(self):
+    def post_order_dft(self, node):
         pass
 
 """
@@ -183,6 +186,7 @@ bst.insert(3)
 bst.insert(4)
 bst.insert(2)
 
+bst.in_order_print(bst)
 bst.bft_print(bst)
 bst.dft_print(bst)
 
