@@ -87,6 +87,7 @@ class BSTNode:
             self.right.for_each(fn)
             
     def delete(self, value):
+        pass
         # search for value like we did in contains()
         
         # cases
@@ -98,45 +99,65 @@ class BSTNode:
             # larger child becomes the parent of its sibling
         
     # Part 2 -----------------------
+    from queue import Queue
+    from stack import Stack
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
-    def in_order_print(self):
-        if self:
-            
+    def in_order_print(self, node):
+        if self:            
             if self.left is not None:
                 # go left
-                self.left.in_order_print()
+                self.left.in_order_print(self.left)
             # print
+            print(self.value)
             if self.right is not None:
                 # go right
-                self.right.in_order_print()
+                self.right.in_order_print(self.right)
             #print
         pass
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
-    def bft_print(self):
+    def bft_print(self, node):
         # create a queue for nodes
+        queue = Queue()
         # add the first node to the queue
+        queue.enqueue(node.value)
         # while queue is not empty
+        while queue.size > 0:
             # remove the first node from the queue
+            removed = queue.dequeue()
             # print the removed node
+            print(removed.value)
             # add all children into the queue
-        pass
+            if removed.left is not None:
+                queue.enqueue(removed.left)
+            if removed.right is not None:
+                queue.enqueue(removed.right)
+        
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
-    def dft_print(self):
+    def dft_print(self, node):
         # create a stack for nodes
+        stack = Stack()
         # add the first node to the stack
+        stack.push(node.value)
         # while the stack is not empty
+        while stack.size > 0:
             # get the current node from the top of the stack - pop
+            removed = stack.pop()
             # print that node
+            print(removed.value)
             # add all children to stack - order matters!
+            if removed.left is not None:
+                stack.push(removed.left)
+            if removed.right is not None:
+                stack.push(removed.right)
         # done when stack is empty
             
-        pass
+        
 
     # Stretch Goals -------------------------
     # Note: Research may be required
@@ -162,8 +183,8 @@ bst.insert(3)
 bst.insert(4)
 bst.insert(2)
 
-bst.bft_print()
-bst.dft_print()
+bst.bft_print(bst)
+bst.dft_print(bst)
 
 # print("elegant methods")
 # print("pre order")
