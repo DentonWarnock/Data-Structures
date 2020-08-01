@@ -122,7 +122,3 @@ linked_list.add_to_tail(7)
 print(f'the end of the list is: {linked_list.tail.value}')
 print(f'the max of the list is: {linked_list.get_max()}')
 
-print(f'the length of the list is {linked_list.length}')
-linked_list.add_to_head(0)
-linked_list.add_to_head(1)
-print(f'the length of the list is {linked_list.length}')

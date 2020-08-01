@@ -17,26 +17,26 @@ Stretch: What if you could only use instances of your Stack class to implement t
 from singly_linked_list import LinkedList, Node
 
 # Array
-class Queue:
-    def __init__(self):
-        self.size = 0
-        self.storage = []
+# class Queue:
+#     def __init__(self):
+#         self.size = 0
+#         self.storage = []
     
-    def __len__(self):
-        return self.size
+#     def __len__(self):
+#         return self.size
 
-    def enqueue(self, value):
-        self.size += 1
-        self.storage.insert(0, value)
-        return self.storage[0]
+#     def enqueue(self, value):
+#         self.size += 1
+#         self.storage.insert(0, value)
+#         return self.storage[0]
 
-    def dequeue(self):
-        if len(self.storage) == 0:
-            return None
-        else:
-            self.size -= 1
-            removed_item = self.storage.pop()
-            return removed_item
+#     def dequeue(self):
+#         if len(self.storage) == 0:
+#             return None
+#         else:
+#             self.size -= 1
+#             removed_item = self.storage.pop()
+#             return removed_item
         
 
 # SLL
